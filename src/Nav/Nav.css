@@ -1,0 +1,19 @@
+.Nav {
+    display: flex;
+    border-bottom: #ce003c solid 3px;
+    border-radius: 0 0 25px 25px;
+    font-family: fantasy;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 1%;
+    padding-bottom: 0.5%;
+    align-items: center;
+    box-shadow: 6px 6px 12px #221313;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .Nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  }

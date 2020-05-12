@@ -1,0 +1,102 @@
+.container {
+  background-color: hsla(0, 1%, 77%, 0.769);
+  margin: 4%;
+  color: #1500ce;
+  padding: 10px;
+  text-align: center;
+}
+.container h2 {
+  font-size: 3rem;
+}
+
+input{
+  border: rgb(36, 36, 255) solid;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.fav{
+  text-decoration: none;
+  padding-top: 2%;
+  font-size: 2em;
+  color: #aaa;
+  margin-bottom: 1%;
+}
+
+.fav:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+  color: rgb(255, 30, 0);
+  cursor: pointer;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  transition: all 1s;
+  margin: 1%;
+  width: 250px;
+}
+
+.section:hover {
+  background-color: #1500ce;
+  color: white;
+}
+.photo {
+  width: 70%;
+  padding: 0 15%;
+}
+
+a{
+  color: brown;
+}
+
+.rating {
+  direction: rtl;
+  margin-bottom: 1%;
+  margin-top: 2%;
+}
+.rating a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 2em;
+  transition: color .4s;
+}
+.rating a:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+  color: orange;
+  cursor: pointer;
+}
+
+.rating2 {
+  direction: rtl;
+}
+.rating2 a {
+  text-decoration: none;
+  font-size: 2em;
+  color: orange;
+}
+
+.Ajout{
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 2%;
+  margin-left: 45%;
+  margin-right: 45%;
+  margin-top: 2%;
+}
+
+.Ajout a{
+  text-decoration: none;
+  font-size: 4em;
+color: blue;
+font-weight: bolder;
+}

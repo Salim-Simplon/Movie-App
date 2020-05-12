@@ -1,0 +1,29 @@
+#car {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  padding-left: 25%;
+  padding-right: 15%;
+  border-radius: 3%;
+  border-bottom: #ce003c solid 3px;
+  border-radius: 25px 25px 25px 25px;
+  box-shadow: 6px 6px 12px #221313;
+}
+
+h1 {
+  padding-top: 5%;
+  margin-left: 20%;
+}
+
+.Carre {
+  width: 70%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: transparent;
+}
+
+.slick-dots {
+  color: transparent;
+}

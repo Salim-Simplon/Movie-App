@@ -1,0 +1,12 @@
+a {
+  list-style: none;
+  padding-left: 19px;
+  color: black;
+  text-decoration: underline white;
+  margin-top: 10%;
+}
+
+#first {
+  color: #ce003c;
+  text-decoration: overline #ce003c;
+}

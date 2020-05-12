@@ -1,0 +1,45 @@
+.Contact-page {
+  background: url("https://images.alphacoders.com/846/thumb-1920-846414.jpg")
+    no-repeat;
+  background-size: 100% 100%;
+}
+.Contact {
+  width: 80%;
+  margin: 100px auto;
+  background-color: rgba(220, 20, 60, 0.527);
+  border: crimson solid 1px;
+  box-shadow: 2px 2px 50px gray;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.socials {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgba(255, 255, 255, 0.574);
+}
+@media only screen and (max-width: 1000px) {
+  .Contact-page {
+    background-size: cover;
+  }
+
+  .Contact {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .link {
+    margin-top: 100px;
+    margin-left: 40px;
+  }
+  .logo-s i {
+    margin-left: 50px;
+  }
+  .paragraph {
+    margin-left: 20px;
+  }
+  .map {
+    margin-left: 0;
+  }
+}
