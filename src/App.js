@@ -1,14 +1,20 @@
 import React from 'react';
-import Contact from './Contact/Contact'
-import Add from './Ajout/New'
-import Val from './Nos Valeur/notrevaleur'
+import { BrowserRouter, Route } from "react-router-dom";
+import Nav from './Nav/Nav'
+import SimpleSlider from './Carousel/Carousel'
+import Foot from './Footer/Footer'
 import './App.css';
+import Mov from './Nos Valeur/notrevaleur';
+import Contact from './Contact/Contact'
 
 function App() {
   return (
     <div className="App">
-      <Val />
-      <Add />
+      <Nav />
+      <Contact />
+      <SimpleSlider />
+      <Mov />
+      <Foot />
     </div>
   );
 }

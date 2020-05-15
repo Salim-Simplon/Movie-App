@@ -10,3 +10,10 @@ a {
   color: #ce003c;
   text-decoration: overline #ce003c;
 }
+
+@media only screen and (max-width: 1100px) {
+  a {
+    margin-top: 1%;
+    padding-left: 19px;
+  }
+}

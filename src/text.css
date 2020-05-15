@@ -1,0 +1,79 @@
+.container {
+    background-color: hsla(0, 1%, 77%, 0.769);
+    margin: 4%;
+    color: #1500ce;
+    padding: 10px;
+    text-align: center;
+  }
+  .container h2 {
+    font-size: 3rem;
+  }
+  
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .fav{
+    text-decoration: none;
+    padding-top: 2%;
+    font-size: 2em;
+    color: #aaa;
+    margin-bottom: 1%;
+  }
+  
+  .fav:hover,
+  .rating a:focus,
+  .rating a:hover ~ a,
+  .rating a:focus ~ a {
+    color: rgb(255, 30, 0);
+    cursor: pointer;
+  }
+  
+  .section {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    transition: all 1s;
+    margin: 1%;
+    width: 250px;
+  }
+  
+  .section:hover {
+    background-color: #1500ce;
+    color: white;
+  }
+  .photo {
+    width: 70%;
+    padding: 0 15%;
+  }
+  
+  a{
+    color: brown;
+  }
+  
+  .rating {
+    direction: rtl;
+  }
+  .rating a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 2em;
+    transition: color .4s;
+  }
+  .rating a:hover,
+  .rating a:focus,
+  .rating a:hover ~ a,
+  .rating a:focus ~ a {
+    color: orange;
+    cursor: pointer;
+  }
+  
+  @media only screen and (max-width: 1000px) {
+    .top {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

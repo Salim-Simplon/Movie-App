@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "./Form";
+import Sign from './Sign'
 import "./Contact.css";
 
 function Contact() {
@@ -7,7 +8,7 @@ function Contact() {
     <div className="Contact-page">
       <div className="Contact">
         <Form />
-        <Form />
+        <Sign />
       </div>
     </div>
   );

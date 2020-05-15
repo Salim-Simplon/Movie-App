@@ -1,10 +1,12 @@
 import React from "react";
 import "./notrevaleur.css";
+import Add from "../Ajout/New";
 
-class Mov extends React.Component {
+class Val extends React.Component {
   state = {
-    filter: 0,
-    films: [
+    
+    filter: "",
+    film: [
       {
         name: "My Spy",
         role: "ACTION",
@@ -74,50 +76,112 @@ class Mov extends React.Component {
           "https://2.bp.blogspot.com/-LLHG4rDXxXo/Xo8QL4YxC1I/AAAAAAAAI_U/KnugUt2CouQcZWUKQsdgQTECD2JYekkBwCK4BGAYYCw/s1600/ULvT8.jpg",
       },
     ],
+
+    tab: {
+      name: "",
+      role: "",
+      avis: "",
+      info: "",
+      image: "",
+    },
   };
 
-  setFilter = (star) => {
-    this.setState({ filter: star });
+  Change = (i) => {
+    let newImage = i.target.value;
+    this.setState(Object.assign(this.state.tab, { image: newImage }));
+    console.log(this.state.tab.image);
+  };
+
+  Change1 = (m) => {
+    let newName = m.target.value;
+    this.setState(Object.assign(this.state.tab, { name: newName }));
+    console.log(this.state.tab.name);
+  };
+
+  Change2 = (n) => {
+    let newRole = n.target.value;
+    this.setState(Object.assign(this.state.tab, { role: newRole }));
+    console.log(this.state.tab.role);
+  };
+
+  Change3 = (e) => {
+    let exp = e.target.value;
+
+    if (exp == 1) {
+      exp = "★";
+    } else if (exp == 2) {
+      exp = "★★";
+    } else if (exp == 3) {
+      exp = "★★★";
+    } else if (exp == 4) {
+      exp = "★★★★";
+    } else if (exp == 5) {
+      exp = "★★★★★";
+    } else {
+      alert("Entrez un nombre correct");
+      exp = "";
+    }
+    this.setState(Object.assign(this.state.tab, { avis: exp }));
+    console.log(this.state.tab.avis);
+  };
+
+  Change4 = (u) => {
+    let newInfo = u.target.value;
+    this.setState(Object.assign(this.state.tab, { info: newInfo }));
+    console.log(this.state.tab.info);
+  };
+
+  movieAdd = () => {
+    this.state.film.unshift(this.state.tab);
+  };
+
+  handleChange = (event) => {
+    this.setState({ filter: event.target.value });
   };
 
   render() {
-    const dataToRender = this.state.filter
-      ? this.state.films.filter((item) => item.avis.length >= this.state.filter)
-      : this.state.films;
-
+    const { filter, film } = this.state;
+    const lowercasedFilter = filter.toLowerCase();
+    const filteredData = film.filter((item) => {
+      return Object.keys(item).some((key) =>
+        item[key].toLowerCase().includes(lowercasedFilter)
+      );
+    });
     return (
       <div>
         <div className="container">
           <h2 className="titre">Movies</h2>
-          <input />
-          <div className="rating">
-            <a href="javascript:void(0)" onClick={(e) => this.setFilter(5)}>
+          <input value={filter} onChange={this.handleChange} />
+          <div class="rating">
+            <a href="#5" title="Donner 5 étoiles">
               ★
             </a>
-            <a href="javascript:void(0)" onClick={(e) => this.setFilter(4)}>
+            <a href="#4" title="Donner 4 étoiles">
               ★
             </a>
-            <a href="javascript:void(0)" onClick={(e) => this.setFilter(3)}>
+            <a href="#3" title="Donner 3 étoiles">
               ★
             </a>
-            <a href="javascript:void(0)" onClick={(e) => this.setFilter(2)}>
+            <a href="#2" title="Donner 2 étoiles">
               ★
             </a>
-            <a href="javascript:void(0)" onClick={(e) => this.setFilter(1)}>
+            <a href="#1" title="Donner 1 étoile">
               ★
             </a>
           </div>
           <div className="top">
-            {dataToRender.map((item) => (
-              <div className="section" key={item.avis}>
-                <a href="#6" title="Ajouter aux favoris" className="fav">
+            {filteredData.map((item) => (
+              <div className="section" key={item.name}>
+                <a href="#" title="Ajouter aux favoris" className="fav">
                   ☆
                 </a>
                 <img className="photo" src={item.image} alt="moviepic" />
                 <h3>{item.name}</h3>
-                <input type="text" value={item.role}></input>
+
+                <div>{item.role}</div>
+
                 <div class="rating2">
-                  <a href="#7" title="Avis du public">
+                  <a href="#" title="Avis du public">
                     {item.avis}
                   </a>
                 </div>
@@ -127,14 +191,22 @@ class Mov extends React.Component {
               </div>
             ))}
           </div>
-          <div className="Ajout">
-            <a href="#8" title="Ajouter un film">
-              +
-            </a>
+          <Add
+            movieAdd={this.movieAdd}
+            Change={this.Change}
+            Change1={this.Change1}
+            Change2={this.Change2}
+            Change3={this.Change3}
+            Change4={this.Change4}
+          />
+          <div>
+            <h2 className="titre">Movies Favoris</h2>
           </div>
         </div>
       </div>
     );
   }
+  /*<Add film={this.addMovie} />*/
 }
-export default Mov;
+
+export default Val;

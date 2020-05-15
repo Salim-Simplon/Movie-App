@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./New.css";
+import "./Edit.css";
 
-export default class Add extends Component {
+export default class Edit extends Component {
   render() {
     return (
       <div className="appli">
@@ -64,7 +64,6 @@ export default class Add extends Component {
                 />
               </p>
               <input type="reset" value="Soumettre" />
-              <input type="submit" value="Raffrechir" />
             </form>
           </div>
         </div>

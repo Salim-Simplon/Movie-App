@@ -1,10 +1,11 @@
 import React from "react";
 import "./notrevaleur.css";
+import Add from "../Ajout/New";
 
-class Val extends React.Component {
+class Mov extends React.Component {
   state = {
-    filter: "",
-    film: [
+    filterRate: 1,
+    films: [
       {
         name: "My Spy",
         role: "ACTION",
@@ -74,73 +75,257 @@ class Val extends React.Component {
           "https://2.bp.blogspot.com/-LLHG4rDXxXo/Xo8QL4YxC1I/AAAAAAAAI_U/KnugUt2CouQcZWUKQsdgQTECD2JYekkBwCK4BGAYYCw/s1600/ULvT8.jpg",
       },
     ],
+
+    tab: {
+      name: "",
+      role: "",
+      avis: "",
+      info: "",
+      image: "",
+    },
+
+    favorites: [],
+
+    identities: {
+      login: "",
+      mail: "",
+      pass: "",
+    },
+
+    verify: {
+      login: "",
+      pass: "",
+    },
   };
 
+  //Add Movie
+
+  Change = (i) => {
+    let newImage = i.target.value;
+    this.setState(Object.assign(this.state.tab, { image: newImage }));
+    console.log(this.state.tab.image);
+  };
+
+  Change1 = (m) => {
+    let newName = m.target.value;
+    this.setState(Object.assign(this.state.tab, { name: newName }));
+    console.log(this.state.tab.name);
+  };
+
+  Change2 = (n) => {
+    let newRole = n.target.value;
+    this.setState(Object.assign(this.state.tab, { role: newRole }));
+    console.log(this.state.tab.role);
+  };
+
+  Change3 = (e) => {
+    let exp = e.target.value;
+
+    if (exp == 1) {
+      exp = "★";
+    } else if (exp == 2) {
+      exp = "★★";
+    } else if (exp == 3) {
+      exp = "★★★";
+    } else if (exp == 4) {
+      exp = "★★★★";
+    } else if (exp == 5) {
+      exp = "★★★★★";
+    } else {
+      alert("Entrez un nombre correct");
+      exp = "";
+    }
+    this.setState(Object.assign(this.state.tab, { avis: exp }));
+    console.log(this.state.tab.avis);
+  };
+
+  Change4 = (u) => {
+    let newInfo = u.target.value;
+    this.setState(Object.assign(this.state.tab, { info: newInfo }));
+    console.log(this.state.tab.info);
+  };
+
+  movieAdd = () => {
+    this.state.films.push(this.state.tab);
+  };
+
+  // Delete Movie
+
+  Delete = (item) => {
+    let films = this.state.films;
+    films = films.filter((element) => element.image !== item.image);
+    console.log("film", films);
+    this.setState({ films });
+  };
+
+  // Favorite Movies
+
+  Favorite = (item) => {
+    this.setState((prevState) => ({
+      favorites: prevState.favorites.concat(item),
+    }));
+  };
+
+  //Search barre
+
   handleChange = (event) => {
-    this.setState({ filter: event.target.value });
+    this.setState({ filterName: event.target.value });
+  };
+
+  //Search stars
+
+  setFilter = (star) => {
+    this.setState({ filterRate: star });
+  };
+
+  // Verif Identity
+
+  setIdentity1 = (e) => {
+    let newLogin = e.target.value;
+    this.setState(Object.assign(this.state.identities, { login: newLogin }));
+    console.log(this.state.identities.login);
+  };
+
+  setIdentity2 = (e) => {
+    let newMail = e.target.value;
+    this.setState(Object.assign(this.state.identities, { mail: newMail }));
+    console.log(this.state.identities.mail);
+  };
+
+  setIdentity3 = (e) => {
+    let newPass = e.target.value;
+    this.setState(Object.assign(this.state.identities, { pass: newPass }));
+    console.log(this.state.identities.pass);
+  };
+
+  setVerify1 = (e) => {
+    let newLogin = e.target.value;
+    this.setState(Object.assign(this.state.verify, { login: newLogin }));
+    console.log(this.state.verify.login);
+  };
+
+  setVerify2 = (e) => {
+    let newPass = e.target.value;
+    this.setState(Object.assign(this.state.verify, { pass: newPass }));
+    console.log(this.state.verify.pass);
+  };
+
+  verIdentity = () => {
+    if (
+      this.state.verify.login.value === this.state.identities.login.value &&
+      this.state.verify.pass.value === this.state.identities.pass.value
+    )
+      return alert("Hello! In Your Movie Space!");
+    else return alert("Opps! You Should Verrify Your Informations!");
   };
 
   render() {
-    const { filter, film } = this.state;
-    const lowercasedFilter = filter.toLowerCase();
-    const filteredData = film.filter((item) => {
-      return Object.keys(item).some((key) =>
-        item[key].toLowerCase().includes(lowercasedFilter)
-      );
-    });
+    const { filterName, films, filterRate } = this.state;
     return (
       <div>
         <div className="container">
           <h2 className="titre">Movies</h2>
-          <input value={filter} onChange={this.handleChange} />
-          <div class="rating">
-            <a href="#5" title="Donner 5 étoiles">
+          <input value={filterName} onChange={this.handleChange} />
+          <div className="rating">
+            <a href="javascript:void(0)" onClick={(e) => this.setFilter(5)}>
               ★
             </a>
-            <a href="#4" title="Donner 4 étoiles">
+            <a href="javascript:void(0)" onClick={(e) => this.setFilter(4)}>
               ★
             </a>
-            <a href="#3" title="Donner 3 étoiles">
+            <a href="javascript:void(0)" onClick={(e) => this.setFilter(3)}>
               ★
             </a>
-            <a href="#2" title="Donner 2 étoiles">
+            <a href="javascript:void(0)" onClick={(e) => this.setFilter(2)}>
               ★
             </a>
-            <a href="#1" title="Donner 1 étoile">
+            <a href="javascript:void(0)" onClick={(e) => this.setFilter(1)}>
               ★
             </a>
           </div>
           <div className="top">
-            {filteredData.map((item) => (
-              <div className="section" key={item.name}>
-                <a href="#" title="Ajouter aux favoris" className="fav">
-                  ☆
-                </a>
-                <img className="photo" src={item.image} alt="moviepic" />
+            {films
+              .filter((item) => {
+                if (!filterRate) return item;
+                else if (filterRate) {
+                  return item.avis.length >= filterRate;
+                }
+              })
+              .filter((item) => {
+                if (!filterName) return item;
+                else if (filterName) return item.name === filterName;
+              })
+              .map((item) => (
+                <div className="section" key={item.avis} key={Math.random()}>
+                  <a
+                    href="#6"
+                    title="Ajouter aux favoris"
+                    className="fav"
+                    onClick={() => this.Favorite(item)}
+                  >
+                    ❤
+                  </a>
+                  <img className="photo" src={item.image} alt="moviepic" />
+                  <h3>{item.name}</h3>
+                  <div>{item.role}</div>
+                  <div className="rating2">
+                    <a href="#7" title="Avis du public">
+                      {item.avis}
+                    </a>
+                  </div>
+                  <p>
+                    <a className="voir" href={item.info}>
+                      [Voir]
+                    </a>
+                  </p>
+                  <div>
+                    <button
+                      title="Supprimer un film"
+                      className="bntc"
+                      onClick={() => this.Delete(item)}
+                    >
+                      🗑️
+                    </button>
+                    <button className="bnte" onClick="">
+                      ✎
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
+          <Add
+            movieAdd={this.movieAdd}
+            Change={this.Change}
+            Change1={this.Change1}
+            Change2={this.Change2}
+            Change3={this.Change3}
+            Change4={this.Change4}
+          />
+          <div>
+            <h2 className="titre">Movies Favoris</h2>
+          </div>
+          <div className="top">
+            {this.state.favorites.map((item) => (
+              <div className="section">
+                <img className="photo2" src={item.image} alt="moviepic" />
                 <h3>{item.name}</h3>
-
                 <div>{item.role}</div>
-
-                <div class="rating2">
-                  <a href="#" title="Avis du public">
+                <div className="rating2">
+                  <a href="#7" title="Avis du public">
                     {item.avis}
                   </a>
                 </div>
                 <p>
-                  <a href={item.info}>[Voir]</a>
+                  <a className="voir" href={item.info}>
+                    [Voir]
+                  </a>
                 </p>
               </div>
             ))}
-          </div>
-          <div className="Ajout">
-            <a href="#" title="Ajouter un film">
-              +
-            </a>
           </div>
         </div>
       </div>
     );
   }
 }
-
-export default Val;
+export default Mov;

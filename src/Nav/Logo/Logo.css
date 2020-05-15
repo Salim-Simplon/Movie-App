@@ -5,12 +5,12 @@
   margin-bottom: 1%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1100px) {
   .Lo {
-    padding-right: 0;
+  padding-right: 0;
   padding-left: 0;
   width: 20%;
   margin-top: 2%;
-  margin-bottom: 3%;
+  margin-bottom: 0;
   }
 }

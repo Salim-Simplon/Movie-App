@@ -11,9 +11,9 @@
     box-shadow: 6px 6px 12px #221313;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1100px) {
     .Nav {
       flex-direction: column;
-      align-items: center;
+      padding-top: 0;
     }
   }
