@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "./Form";
-import Sign from './Sign'
+import Sign from './Sign';
 import "./Contact.css";
 
 function Contact() {

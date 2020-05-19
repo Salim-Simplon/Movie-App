@@ -1,21 +1,23 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Nav from './Nav/Nav'
-import SimpleSlider from './Carousel/Carousel'
-import Foot from './Footer/Footer'
-import './App.css';
-import Mov from './Nos Valeur/notrevaleur';
-import Contact from './Contact/Contact'
+import Nav from "./Nav/Nav";
+import "./App.css";
+import Accueil from "./Accueil";
+import Inscription from "./Inscription";
+import favoris from "./Films";
+import Films from "./Films";
 
 function App() {
   return (
-    <div className="App">
-      <Nav />
-      <Contact />
-      <SimpleSlider />
-      <Mov />
-      <Foot />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Nav />
+        <Route exact path="/" component={Accueil} />
+        <Route path="/sign" component={Inscription} />
+        <Route path="/films" component={Films} />
+        <Route path="/films#favoris" component={favoris} />
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -253,7 +253,10 @@ class Mov extends React.Component {
               })
               .filter((item) => {
                 if (!filterName) return item;
-                else if (filterName) return item.name === filterName;
+                else if (filterName)
+                  return item.name
+                    .toLowerCase()
+                    .includes(filterName.toLowerCase());
               })
               .map((item) => (
                 <div className="section" key={item.avis} key={Math.random()}>
@@ -286,9 +289,6 @@ class Mov extends React.Component {
                     >
                       🗑️
                     </button>
-                    <button className="bnte" onClick="">
-                      ✎
-                    </button>
                   </div>
                 </div>
               ))}
@@ -302,7 +302,9 @@ class Mov extends React.Component {
             Change4={this.Change4}
           />
           <div>
-            <h2 className="titre">Movies Favoris</h2>
+            <h2 className="titre" id="favoris">
+              Movies Favoris
+            </h2>
           </div>
           <div className="top">
             {this.state.favorites.map((item) => (

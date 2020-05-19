@@ -18,12 +18,12 @@ function Link() {
 function Link() {
   return (
     <div className="link">
-      <a href="#" id="first">
+      <a href="/" id="first">
         Accueil
       </a>
-      <a href="#">Insription</a>
-      <a href="#">Nos Films</a>
-      <a href="#">Favoris</a>
+      <a href="/sign">Insription</a>
+      <a href="/films">Nos Films</a>
+      <a href="/films#favoris">Favoris</a>
     </div>
   );
 }

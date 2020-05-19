@@ -47,6 +47,9 @@ export default class SimpleSlider extends Component {
           <div>
             <img className="Carre" src="/images/GP6.jpeg" alt="" />
           </div>
+          <div>
+            <img className="Carre" src="/images/GP9.png" alt="" />
+          </div>
         </Slider>
       </div>
     );
