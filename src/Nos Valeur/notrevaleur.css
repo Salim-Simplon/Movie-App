@@ -139,16 +139,14 @@ input {
   color: red;
 }
 
-/* CSS for animated bouncing loader. */
+/* Partie loader */
 .loader {
   display: flex;
   justify-content: center;
 	align-items: center;
 }
 
-/* Loader circles */
 .loader > span {
-  background: #FAD000;
   background-color: red;
   border-radius: 50%;
   margin: 5rem 0.5rem;
@@ -164,7 +162,6 @@ input {
   animation-delay: 0.4s;
 }
 
-/* Define the animation called bouncingLoader. */
 @keyframes bouncingLoader {
   from {
     width: 0.1rem;
