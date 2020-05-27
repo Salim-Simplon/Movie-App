@@ -4,6 +4,7 @@ import Add from "../Ajout/New";
 
 class Mov extends React.Component {
   state = {
+    loader: true,
     filterRate: 1,
     films: [
       {
@@ -158,6 +159,21 @@ class Mov extends React.Component {
     this.setState({ films });
   };
 
+  /* Edit Movies
+
+  setUpdate = (text, key) => {
+    const items = this.state.items;
+    items.map(item => {
+      if(item.key===key){
+        item.text=text;
+      }
+    })
+    this.setState({items: items})
+  }
+
+// in the input we add (onChange={(e)=>this.setUpdate(e.target.value, item.key)})
+
+*/
   // Favorite Movies
 
   Favorite = (item) => {
@@ -219,6 +235,12 @@ class Mov extends React.Component {
     else return alert("Opps! You Should Verrify Your Informations!");
   };
 
+  componentDidMount = () => {
+    setTimeout(() => {
+      this.setState({ loader: false });
+    }, 5000);
+  };
+
   render() {
     const { filterName, films, filterRate } = this.state;
     return (
@@ -243,56 +265,70 @@ class Mov extends React.Component {
               ★
             </a>
           </div>
-          <div className="top">
-            {films
-              .filter((item) => {
-                if (!filterRate) return item;
-                else if (filterRate) {
-                  return item.avis.length >= filterRate;
-                }
-              })
-              .filter((item) => {
-                if (!filterName) return item;
-                else if (filterName)
-                  return item.name
-                    .toLowerCase()
-                    .includes(filterName.toLowerCase());
-              })
-              .map((item) => (
-                <div className="section" key={item.avis} key={Math.random()}>
-                  <a
-                    href="#6"
-                    title="Ajouter aux favoris"
-                    className="fav"
-                    onClick={() => this.Favorite(item)}
-                  >
-                    ❤
-                  </a>
-                  <img className="photo" src={item.image} alt="moviepic" />
-                  <h3>{item.name}</h3>
-                  <div>{item.role}</div>
-                  <div className="rating2">
-                    <a href="#7" title="Avis du public">
-                      {item.avis}
-                    </a>
-                  </div>
-                  <p>
-                    <a className="voir" href={item.info}>
-                      [Voir]
-                    </a>
-                  </p>
-                  <div>
-                    <button
-                      title="Supprimer un film"
-                      className="bntc"
-                      onClick={() => this.Delete(item)}
+          {this.state.loader ? (
+            <div className="loader">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          ) : (
+            <div className="top">
+              {films
+                .filter((item) => {
+                  if (!filterRate) return item;
+                  else if (filterRate) {
+                    return item.avis.length >= filterRate;
+                  }
+                })
+                .filter((item) => {
+                  if (!filterName) return item;
+                  else if (filterName)
+                    return item.name
+                      .toLowerCase()
+                      .includes(filterName.toLowerCase());
+                })
+                .map((item) => (
+                  <div className="section" key={item.avis} key={Math.random()}>
+                    <a
+                      href="#6"
+                      title="Ajouter aux favoris"
+                      className="fav"
+                      onClick={() => this.Favorite(item)}
                     >
-                      🗑️
-                    </button>
+                      ❤
+                    </a>
+                    <img className="photo" src={item.image} alt="moviepic" />
+                    <h3>{item.name}</h3>
+                    <input
+                      className="gen"
+                      type="text"
+                      id={item.key}
+                      defaultValue={item.role}
+                    />
+
+                    <div className="rating2">
+                      <a href="#7" title="Avis du public">
+                        {item.avis}
+                      </a>
+                    </div>
+                    <p>
+                      <a className="voir" href={item.info}>
+                        [Voir]
+                      </a>
+                    </p>
+                    <div>
+                      <button
+                        title="Supprimer un film"
+                        className="bntc"
+                        onClick={() => this.Delete(item)}
+                      >
+                        🗑️
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
-          </div>
+                ))}
+            </div>
+          )}
           <Add
             movieAdd={this.movieAdd}
             Change={this.Change}
